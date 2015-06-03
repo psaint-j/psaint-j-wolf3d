@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/29 11:25:54 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/29 18:46:58 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/06/02 20:51:57 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 # define A 0
 # define S 1
 # define D 2
+# define LARG 720
+# define LONG 720
 # define LEFT 123
 # define RIGHT 124
 # define EXIT 53
 
 # include <stdlib.h>
+# include <math.h>
 
 typedef struct		s_pos
 {
@@ -31,9 +34,18 @@ typedef struct		s_pos
 
 typedef struct		s_var
 {
+	float	x;
+	float	y;
+	int		hit;
+	int		side;
 	t_pos	pos;
 	t_pos	dir;
 	t_pos	plan;
+	t_pos	camera;
+	t_pos	step;
+	t_pos	map;
+	t_pos	sidedist;
+	t_pos	delta;
 	int		sreen;
 }					t_var;
 
@@ -56,6 +68,7 @@ typedef struct		s_env
 	t_move	*m;
 	t_var	*v;
 }					t_env;
+
 t_pos				*dir(void);
 void				set_dir_x(double x);
 void				set_dir_y(double y);
