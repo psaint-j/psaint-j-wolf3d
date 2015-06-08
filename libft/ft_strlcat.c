@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/20 17:49:58 by psaint-j          #+#    #+#             */
+/*   Updated: 2014/11/20 17:54:40 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	unsigned int	lendst;
+	int				lensrc;
+	int				i;
+	int				result;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	i = 0;
+	lensrc = ft_strlen(src);
+	lendst = ft_strlen(dst);
+	result = size - lendst - 1;
+	while (i < result)
+	{
+		dst[lendst + i] = src[i];
+		i++;
+	}
+	dst[lendst + i] = '\0';
+	if (size < lendst)
+		return (lensrc + size);
+	return (lendst + lensrc);
 }

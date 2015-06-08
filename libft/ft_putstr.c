@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/06 10:03:09 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/04/03 04:08:03 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+void	ft_putstr(char const *str)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	int	i;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	i = 0;
+	if (str != NULL)
+	{
+		while (str[i] != '\0')
+		{
+			write(1, &str[i], 1);
+			i++;
+		}
+	}
 }

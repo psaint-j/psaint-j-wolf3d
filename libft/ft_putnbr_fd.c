@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/17 14:54:41 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/02/17 18:37:31 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+void ft_putnbr_fd(int n, int fd)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
-
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	if (n == 0)
+		ft_putchar_fd('0', fd);
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	if (n && n <= 2147483647 && n >= -2147483647)
+	{
+		if (n < 0)
+		{
+			n = n * -1;
+			ft_putchar_fd('-', fd);
+		}
+		if (n <= 9)
+		{
+			n = n + 48;
+			ft_putchar_fd(n, fd);
+		}
+		else
+		{
+			ft_putnbr_fd(n / 10, fd);
+			ft_putchar_fd((n % 10 + '0'), fd);
+		}
+	}
 }

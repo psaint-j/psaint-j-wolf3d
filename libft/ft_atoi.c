@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/03 12:22:20 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/05/30 14:29:39 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+int	ft_atoi(const char *str)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	int i;
+	int nb;
+	int	upper;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	i = 0;
+	nb = 0;
+	upper = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			upper = 1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10;
+		nb = nb + str[i] - '0';
+		i++;
+	}
+	if (upper == 1)
+		nb = nb * -1;
+	return (nb);
 }

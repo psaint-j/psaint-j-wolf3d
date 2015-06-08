@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/11 19:49:32 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/04/03 04:48:17 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	char		*chain;
+	size_t		len;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	chain = (char *)malloc(sizeof(char) * (len + 1));
+	if (chain == NULL)
+		return (NULL);
+	ft_strcpy((char *)chain, (char *)s1);
+	ft_strcat((char *)chain, (char *)s2);
+	chain[len] = 0;
+	return (chain);
 }

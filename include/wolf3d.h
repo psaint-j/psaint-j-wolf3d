@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/29 11:25:54 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/02 20:51:57 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/06/05 19:32:04 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@
 # define LEFT 123
 # define RIGHT 124
 # define EXIT 53
+# define ABS(x) (x < 0) ? -x : x
 
 # include <stdlib.h>
 # include <math.h>
+# include "../libft/libft.h"
 
 typedef struct		s_pos
 {
@@ -36,8 +38,12 @@ typedef struct		s_var
 {
 	float	x;
 	float	y;
+	float	walldist;
+	float	height;
 	int		hit;
 	int		side;
+	int		draw_s;
+	int		draw_e;
 	t_pos	pos;
 	t_pos	dir;
 	t_pos	plan;
@@ -46,6 +52,7 @@ typedef struct		s_var
 	t_pos	map;
 	t_pos	sidedist;
 	t_pos	delta;
+	t_pos	olddir;
 	int		sreen;
 }					t_var;
 
@@ -59,6 +66,8 @@ typedef struct		s_move
 	float	walkspeed;
 	float	rotatespeed;
 	float	turn;
+	float	t_speed;
+	float	speed_up;
 }					t_move;
 
 typedef struct		s_env
@@ -84,4 +93,7 @@ void				set_pos_x(double x);
 void				set_pos_y(double y);
 double				get_pos_x(void);
 double				get_pos_y(void);
+int					set_map(int x, int y);
+void				turn_move(t_env *e, float vit);
+void				vertical_move(t_env *e, float	vit);
 #endif

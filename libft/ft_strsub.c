@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/13 17:50:29 by psaint-j          #+#    #+#             */
+/*   Updated: 2014/11/19 18:00:23 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	char	*chain;
+	size_t	i;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	i = 0;
+	chain = (ft_strnew(len + 1));
+	if (s == NULL || chain == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		chain[i] = s[start];
+		i++;
+		start++;
+	}
+	return (chain);
 }

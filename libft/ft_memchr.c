@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/07 18:00:35 by psaint-j          #+#    #+#             */
+/*   Updated: 2014/11/15 17:31:36 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	const unsigned char	*ss;
+	unsigned int		i;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	i = 0;
+	ss = (unsigned char *)s;
+	while (i < n)
+	{
+		if (ss[i] == (unsigned char)c)
+			return ((void *)&ss[i]);
+		i++;
+	}
+	return (NULL);
 }

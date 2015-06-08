@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/29 12:20:19 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/05/29 18:18:19 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/06/03 17:52:18 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		key_down(int keycode, t_env *a)
 	if (keycode == S)
 		a->m->backward = 1;
 	if (keycode == D)
-		a->m->rigth = 1;
+		a->m->right = 1;
 	if (keycode == LEFT)
 	{
 		a->m->turn = 1;
@@ -46,7 +46,7 @@ int		key_up(int keycode, t_env *a)
 	if (keycode == S)
 		a->m->backward = 0;
 	if (keycode == D)
-		a->m->rigth = 0;
+		a->m->right = 0;
 	if (keycode == LEFT)
 		a->m->turn = 0;
 	if (keycode == RIGHT)

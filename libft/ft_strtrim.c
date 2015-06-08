@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/18 11:36:13 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/01/13 15:20:26 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+char	*ft_strtrim(char const *s)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	char	*str;
+	size_t	i;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	if (!s)
+		return (NULL);
+	str = (char *)malloc(sizeof(*str) * (ft_strlen(s) + 1));
+	while (*s == ' ' || *s == '\n' || *s == '\t')
+		s++;
+	i = ft_strlen(s);
+	while (i-- > 0 && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
+		(void)s;
+	if (!(str = ft_strsub(s, 0, i + 1)))
+		return (NULL);
+	return (str);
 }

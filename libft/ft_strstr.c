@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2015/02/17 17:14:24 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/02/17 18:10:28 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include <string.h>
+#include "libft.h"
 
-t_pos	*plan(void)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	int		i;
+	int		len;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	len = ft_strlen(s2);
+	i = 0;
+	if (!*s2)
+		return ((char *)s1);
+	while (s1[i])
+	{
+		if (ft_strncmp(&s1[i], s2, len) == 0)
+			return ((char *)&s1[i]);
+		i++;
+	}
+	return (NULL);
 }

@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/15 17:18:16 by psaint-j          #+#    #+#             */
+/*   Updated: 2014/11/19 17:40:28 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+char		*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	size_t	n1;
+	size_t	n2;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	n1 = 0;
+	n2 = 0;
+	while (s1[n1] != '\0')
+		n1++;
+	while (s2[n2] != '\0' && n2 < n)
+	{
+		s1[n1] = s2[n2];
+		n1++;
+		n2++;
+	}
+	s1[n1] = '\0';
+	return (s1);
 }

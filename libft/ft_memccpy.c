@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 10:33:16 by psaint-j         ###   ########.fr       */
+/*   Created: 2014/11/07 10:49:16 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/03/02 20:46:28 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "libft.h"
 
-t_pos	*plan(void)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	static	t_pos plan = {-1, 0};
-	return (&plan);
-}
+	char		*p1;
+	const char	*p2;
+	size_t		i;
 
-void	set_plan_x(double x)
-{
-	plan()->x = x;
-}
-
-void	set_plan_y(double y)
-{
-	plan()->y = y;
-}
-
-double	get_plan_x(void)
-{
-	return(plan()->x);
-}
-
-double	get_plan_y(void)
-{
-	return(plan()->y);
+	if (!dst || !src || !n)
+		return (NULL);
+	i = 0;
+	p1 = (char *)dst;
+	p2 = (char *)src;
+	while (i < n)
+	{
+		p1[i] = p2[i];
+		if ((unsigned char)p1[i] == (unsigned char)c)
+			return (p1 + i + 1);
+		i++;
+	}
+	return (NULL);
 }
