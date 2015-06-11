@@ -6,7 +6,7 @@
 #    By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/06/10 12:05:28 by psaint-j          #+#    #+#              #
-#    Updated: 2015/06/10 16:10:18 by psaint-j         ###   ########.fr        #
+#    Updated: 2015/06/11 14:57:33 by psaint-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,12 @@ $(NAME): $(OBJ)
 
 clean:
 	@make clean -C libft/
-	@rm -rf $(NAME)
-	@rm -rf *.o
+	@rm -rf $(OBJ)
+	@echo "\033[33m"OBJ : "\033[32m"Deleted"\033[0m"
 
 fclean: clean
 	@make fclean -C libft/ 
 	@rm -rf $(NAME)
-	@rm -rf *.o
 	@echo "\033[33m"$(NAME) : "\033[32m"Deleted"\033[0m"
 
 re: fclean $(NAME)
