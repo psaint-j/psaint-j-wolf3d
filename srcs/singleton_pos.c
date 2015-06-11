@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/10 18:11:10 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/06/11 14:36:37 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_pos	*pos(void)
 {
 	static	t_pos pos = {11, 19};
+
 	return (&pos);
 }
 
@@ -30,10 +31,10 @@ void	set_pos_y(double y)
 
 double	get_pos_x(void)
 {
-	return(pos()->x);
+	return (pos()->x);
 }
 
 double	get_pos_y(void)
 {
-	return(pos()->y);
+	return (pos()->y);
 }

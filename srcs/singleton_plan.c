@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton_plan.c                                    :+:      :+:    :+:  */
+/*   singleton_plan.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/29 18:19:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/10 18:11:15 by psaint-j         ###   ########.fr       */
+/*   Created: 2015/06/11 14:37:22 by psaint-j          #+#    #+#             */
+/*   Updated: 2015/06/11 14:37:39 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_pos	*plan(void)
 {
 	static	t_pos plan = {0, 1};
+
 	return (&plan);
 }
 
@@ -30,10 +31,10 @@ void	set_plan_y(double y)
 
 double	get_plan_x(void)
 {
-	return(plan()->x);
+	return (plan()->x);
 }
 
 double	get_plan_y(void)
 {
-	return(plan()->y);
+	return (plan()->y);
 }

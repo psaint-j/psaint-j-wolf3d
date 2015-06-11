@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/10 10:17:57 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/11 14:26:29 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/06/11 14:38:59 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		expose_hook(t_env *e)
 	if (!(v = (t_var *)malloc(sizeof(t_var))))
 		return (0);
 	set_move(e);
-	e->m->first = 1;
 	if (e->m->F || e->m->B || e->m->L || e->m->R || e->m->turn || e->m->first)
 	{
 		ft_bzero(e->i->data, LARG * LONG * e->i->bpp / 8);
