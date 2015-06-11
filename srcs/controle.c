@@ -6,50 +6,60 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/29 12:20:19 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/03 17:52:18 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/06/10 17:05:46 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/wolf3d.h"
 
-int		key_down(int keycode, t_env *a)
+int		key_down(int keycode, t_env *e)
 {
 	if (keycode == W)
-		a->m->forward = 1;
-	if (keycode == A )
-		a->m->left = 1;
+		e->m->forward = 1;
+	if (keycode == A)
+		e->m->left = 1;
 	if (keycode == S)
-		a->m->backward = 1;
+		e->m->backward = 1;
 	if (keycode == D)
-		a->m->right = 1;
+		e->m->right = 1;
 	if (keycode == LEFT)
 	{
-		a->m->turn = 1;
-		a->m->rotatespeed = -0.1;
+		e->m->turn = 1;
+		e->m->t_speed = -0.1;
 	}
 	if (keycode == RIGHT)
 	{
-		a->m->turn = 1;
-		a->m->rotatespeed = 0.1;
+		e->m->turn = 1;
+		e->m->t_speed = 0.1;
 	}
 	if (keycode == EXIT)
 		exit(0);
 	return (1);
 }
 
-int		key_up(int keycode, t_env *a)
+int		key_up(int keycode, t_env *e)
 {
 	if (keycode == W)
-		a->m->forward = 0;
-	if (keycode == A )
-		a->m->left = 0;
+		e->m->forward = 0;
+	if (keycode == A)
+		e->m->left = 0;
 	if (keycode == S)
-		a->m->backward = 0;
+		e->m->backward = 0;
 	if (keycode == D)
-		a->m->right = 0;
+		e->m->right = 0;
 	if (keycode == LEFT)
-		a->m->turn = 0;
+		e->m->turn = 0;
 	if (keycode == RIGHT)
-		a->m->turn = 0;
+		e->m->turn = 0;
+	if (keycode == LEFT)
+	{
+		e->m->turn = 0;
+		e->m->t_speed = 0;
+	}
+	if (keycode == RIGHT)
+	{
+		e->m->turn = 0;
+		e->m->t_speed = 0;
+	}
 	return (0);
 }

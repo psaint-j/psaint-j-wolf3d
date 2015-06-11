@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/29 11:25:54 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 19:32:04 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/06/10 18:31:41 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@
 
 # include <stdlib.h>
 # include <math.h>
+# include <time.h>
 # include "../libft/libft.h"
+# include "../mlx/mlx.h"
 
 typedef struct		s_pos
 {
@@ -62,21 +64,35 @@ typedef struct		s_move
 	int		backward;
 	int		left;
 	int		right;
-	int		firt;
+	int		first;
 	float	walkspeed;
 	float	rotatespeed;
 	float	turn;
 	float	t_speed;
 	float	speed_up;
+	float	speed_down;
+	float	v;
 }					t_move;
+
+typedef struct		s_img
+{
+	void	*img;
+	char	*data;
+	int		sl;
+	int		bpp;
+	int		endian;
+
+}					t_img;
 
 typedef struct		s_env
 {
 	void	*mlx;
 	void	*win;
 	t_move	*m;
+	t_img	*i;
 	t_var	*v;
 }					t_env;
+
 
 t_pos				*dir(void);
 void				set_dir_x(double x);
@@ -96,4 +112,16 @@ double				get_pos_y(void);
 int					set_map(int x, int y);
 void				turn_move(t_env *e, float vit);
 void				vertical_move(t_env *e, float	vit);
+void				horizontal_move(t_env *e, float vit);
+void				set_move(t_env *e);
+void				mlx_pixel_to_image(t_img *img, int x, int y, int color);
+void				draw_rest(t_env *e, t_var *v);
+void				draw(t_env *e, t_var *v);
+void				hit(t_var *v);
+void				corect_projection(t_var *v);
+void				vect_dir_long(t_var *v);
+void				init_var(t_var *v);
+t_move				*init(void);
+int					key_up(int keycode, t_env *a);
+int					key_down(int keycode, t_env *a);
 #endif

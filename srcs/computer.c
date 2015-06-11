@@ -6,10 +6,12 @@
 /*   By: psaint-j <psaint-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/04 12:20:44 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/05 19:38:39 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/06/11 14:05:20 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/wolf3d.h"
+#define WDIST v->walldist
 
 void	vect_dir_long(t_var *v)
 {
@@ -25,7 +27,7 @@ void	vect_dir_long(t_var *v)
 	}
 	if (v->dir.y < 0)
 	{
-		v->step.x = -1;
+		v->step.y = -1;
 		v->sidedist.y = (v->pos.y - v->map.y) * v->delta.y;
 	}
 	else
@@ -37,31 +39,31 @@ void	vect_dir_long(t_var *v)
 
 void	hit(t_var *v)
 {
-
-	if (v->sidedist.x < v->sidedist.y)
+	while (v->hit == 0)
 	{
-		v->sidedist.x += v->delta.x;
-		v->map.x += v->step.x;
-		v->side = 0;
-	} 
-
-	else 
-	{
-		v->sidedist.y += v->delta.y;
-		v->map.y += v->step.y;
-		v->side = 1;
+		if (v->sidedist.x < v->sidedist.y)
+		{
+			v->sidedist.x += v->delta.x;
+			v->map.x += v->step.x;
+			v->side = 0;
+		}
+		else
+		{
+			v->sidedist.y += v->delta.y;
+			v->map.y += v->step.y;
+			v->side = 1;
+		}
+		if (set_map((int)v->map.x, (int)v->map.y) > 0)
+			v->hit = 1;
 	}
-
-	if (set_map((int)(v->map.x), (int)(v->map.y)) > 0)
-		v->hit = 1;
 }
 
 void	corect_projection(t_var *v)
 {
 	if (v->side == 0)
-		v->walldist = ABS((v->map.x - v->pos.x + (1 - v->step.x)/2)/v->dir.x);
+		WDIST = ABS((v->map.x - v->pos.x + (1 - v->step.x) / 2) / v->dir.x);
 	else
-		v->walldist = ABS((v->map.y - v->pos.y + (1 - v->step.y)/2)/v->dir.y);
+		WDIST = ABS((v->map.y - v->pos.y + (1 - v->step.y) / 2) / v->dir.y);
 	v->height = ABS((int)(LONG / v->walldist));
 	v->draw_s = (int)(-v->height / 2 + LONG / 2);
 	v->draw_e = (int)(v->height / 2 + LONG / 2);

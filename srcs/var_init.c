@@ -6,7 +6,7 @@
 /*   By: psaint-j <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/29 16:53:34 by psaint-j          #+#    #+#             */
-/*   Updated: 2015/06/03 17:55:54 by psaint-j         ###   ########.fr       */
+/*   Updated: 2015/06/11 14:10:16 by psaint-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 t_move		*init(void)
 {
 	t_move	*m;
+
 	if (!(m = (t_move *)malloc(sizeof(t_move))))
 		return (0);
 	m->forward = 0;
 	m->backward = 0;
 	m->left = 0;
 	m->right = 0;
-	m->walkspeed = 0;
-	m->rotatespeed = 0;
 	m->turn = 0;
-	m->firt = 1;
+	m->v = 0;
+	m->t_speed = 0;
+	m->speed_up = 0;
+	m->first = 1;
 	return (m);
 }
 
-void	init_t_var(t_var *v)
+void		init_var(t_var *v)
 {
 	v->y = 0;
 	v->hit = 0;
